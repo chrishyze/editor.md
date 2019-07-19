@@ -1,15 +1,3 @@
-/*
- * Editor.md
- *
- * @file        editormd.amd.js 
- * @version     v1.5.0 
- * @description Open source online markdown editor.
- * @license     MIT License
- * @author      Pandao
- * {@link       https://github.com/pandao/editor.md}
- * @updateTime  2015-06-09
- */
-
 ;(function(factory) {
     "use strict";
     
@@ -22,68 +10,7 @@
 	{
         if (define.amd) // for Require.js
         {
-            var cmModePath  = "./lib/codemirror/mode/";
-            var cmAddonPath = "./lib/codemirror/addon/";
-
-            var codeMirrorModules = [
-                "jquery", "marked", "prettify",
-                "katex", "raphael", "underscore", "flowchart",  "jqueryflowchart",  "sequenceDiagram",
-
-                "./lib/codemirror/lib/codemirror",
-                cmModePath + "css/css",
-                cmModePath + "sass/sass",
-                cmModePath + "shell/shell",
-                cmModePath + "sql/sql",
-                cmModePath + "clike/clike",
-                cmModePath + "php/php",
-                cmModePath + "xml/xml",
-                cmModePath + "markdown/markdown",
-                cmModePath + "javascript/javascript",
-                cmModePath + "htmlmixed/htmlmixed",
-                cmModePath + "gfm/gfm",
-                cmModePath + "http/http",
-                cmModePath + "go/go",
-                cmModePath + "dart/dart",
-                cmModePath + "coffeescript/coffeescript",
-                cmModePath + "nginx/nginx",
-                cmModePath + "python/python",
-                cmModePath + "perl/perl",
-                cmModePath + "lua/lua",
-                cmModePath + "r/r", 
-                cmModePath + "ruby/ruby", 
-                cmModePath + "rst/rst",
-                cmModePath + "smartymixed/smartymixed",
-                cmModePath + "vb/vb",
-                cmModePath + "vbscript/vbscript",
-                cmModePath + "velocity/velocity",
-                cmModePath + "xquery/xquery",
-                cmModePath + "yaml/yaml",
-                cmModePath + "erlang/erlang",
-                cmModePath + "jade/jade",
-
-                cmAddonPath + "edit/trailingspace", 
-                cmAddonPath + "dialog/dialog", 
-                cmAddonPath + "search/searchcursor", 
-                cmAddonPath + "search/search", 
-                cmAddonPath + "scroll/annotatescrollbar", 
-                cmAddonPath + "search/matchesonscrollbar", 
-                cmAddonPath + "display/placeholder", 
-                cmAddonPath + "edit/closetag", 
-                cmAddonPath + "fold/foldcode",
-                cmAddonPath + "fold/foldgutter",
-                cmAddonPath + "fold/indent-fold",
-                cmAddonPath + "fold/brace-fold",
-                cmAddonPath + "fold/xml-fold", 
-                cmAddonPath + "fold/markdown-fold",
-                cmAddonPath + "fold/comment-fold", 
-                cmAddonPath + "mode/overlay", 
-                cmAddonPath + "selection/active-line", 
-                cmAddonPath + "edit/closebrackets", 
-                cmAddonPath + "display/fullscreen",
-                cmAddonPath + "search/match-highlighter"
-            ];
-
-            define(codeMirrorModules, factory);
+            /* Require.js define replace */
         } 
         else 
         {
@@ -97,16 +24,7 @@
     
 }(function() {    
 
-    if (typeof define == "function" && define.amd) {
-       $          = arguments[0];
-       marked     = arguments[1];
-       prettify   = arguments[2];
-       katex      = arguments[3];
-       Raphael    = arguments[4];
-       _          = arguments[5];
-       flowchart  = arguments[6];
-       CodeMirror = arguments[9];
-   }
+    /* Require.js assignment replace */
     
     "use strict";
     
@@ -3252,17 +3170,20 @@
         }
     };
     
+    var isMac = navigator.platform.toUpperCase().indexOf('MAC')>=0;
+    var key = isMac ? "Cmd" : "Ctrl";
+    
     editormd.keyMaps = {
-        "Ctrl-1"       : "h1",
-        "Ctrl-2"       : "h2",
-        "Ctrl-3"       : "h3",
-        "Ctrl-4"       : "h4",
-        "Ctrl-5"       : "h5",
-        "Ctrl-6"       : "h6",
-        "Ctrl-B"       : "bold",  // if this is string ==  editormd.toolbarHandlers.xxxx
-        "Ctrl-D"       : "datetime",
+        [key + "-1"]       : "h1",
+        [key + "-2"]       : "h2",
+        [key + "-3"]       : "h3",
+        [key + "-4"]       : "h4",
+        [key + "-5"]       : "h5",
+        [key + "-6"]       : "h6",
+        [key + "-B"]       : "bold",  // if this is string ==  editormd.toolbarHandlers.xxxx
+        [key + "-D"]       : "datetime",
         
-        "Ctrl-E"       : function() { // emoji
+        [key + "Ctrl-E"]       : function() { // emoji
             var cm        = this.cm;
             var cursor    = cm.getCursor();
             var selection = cm.getSelection();
@@ -3279,10 +3200,10 @@
                 cm.setCursor(cursor.line, cursor.ch + 1);
             }
         },
-        "Ctrl-Alt-G"   : "goto-line",
-        "Ctrl-H"       : "hr",
-        "Ctrl-I"       : "italic",
-        "Ctrl-K"       : "code",
+        [key + "-Alt-G"]   : "goto-line",
+        [key + "-H"]       : "hr",
+        [key + "-I"]       : "italic",
+        [key + "-K"]       : "code",
         
         "Ctrl-L"        : function() {
             var cm        = this.cm;
@@ -3297,7 +3218,7 @@
                 cm.setCursor(cursor.line, cursor.ch + 1);
             }
         },
-        "Ctrl-U"         : "list-ul",
+        [key + "-U"]         : "list-ul",
         
         "Shift-Ctrl-A"   : function() {
             var cm        = this.cm;
@@ -3317,10 +3238,10 @@
             }
         },
         
-        "Shift-Ctrl-C"     : "code",
-        "Shift-Ctrl-Q"     : "quote",
-        "Shift-Ctrl-S"     : "del",
-        "Shift-Ctrl-K"     : "tex",  // KaTeX
+        ["Shift" + key + "-C"]     : "code",
+        ["Shift" + key + "Q"]     : "quote",
+        ["Shift" + key + "S"]     : "del",
+        ["Shift" + key + "K"]     : "tex",  // KaTeX
         
         "Shift-Alt-C"      : function() {
             var cm        = this.cm;
@@ -3334,16 +3255,16 @@
             } 
         },
         
-        "Shift-Ctrl-Alt-C" : "code-block",
-        "Shift-Ctrl-H"     : "html-entities",
-        "Shift-Alt-H"      : "help",
-        "Shift-Ctrl-E"     : "emoji",
-        "Shift-Ctrl-U"     : "uppercase",
-        "Shift-Alt-U"      : "ucwords",
-        "Shift-Ctrl-Alt-U" : "ucfirst",
-        "Shift-Alt-L"      : "lowercase",
+        ["Shift-" + key + "-Alt-C"]      : "code-block",
+        ["Shift-" + key + "-H"]          : "html-entities",
+        "Shift-Alt-H"                    : "help",
+        ["Shift-" + key + "-E"]          : "emoji",
+        ["Shift-" + key + "-U"]          : "uppercase",
+        "Shift-Alt-U"                    : "ucwords",
+        ["Shift-" + key + "-Alt-U"]      : "ucfirst",
+        "Shift-Alt-L"                    : "lowercase",
         
-        "Shift-Ctrl-I"     : function() {
+        ["Shift-" + key + "-I"]          : function() {
             var cm        = this.cm;
             var cursor    = cm.getCursor();
             var selection = cm.getSelection();
@@ -3357,15 +3278,15 @@
             }
         },
         
-        "Shift-Ctrl-Alt-I" : "image",
-        "Shift-Ctrl-L"     : "link",
-        "Shift-Ctrl-O"     : "list-ol",
-        "Shift-Ctrl-P"     : "preformatted-text",
-        "Shift-Ctrl-T"     : "table",
-        "Shift-Alt-P"      : "pagebreak",
-        "F9"               : "watch",
-        "F10"              : "preview",
-        "F11"              : "fullscreen",
+        ["Shift-" + key + "-Alt-I"]     : "image",
+        ["Shift-" + key + "-L"]         : "link",
+        ["Shift-" + key + "-O"]         : "list-ol",
+        ["Shift-" + key + "-P"]         : "preformatted-text",
+        ["Shift-" + key + "-T"]         : "table",
+        "Shift-Alt-P"                   : "pagebreak",
+        "F9"                            : "watch",
+        "F10"                           : "preview",
+        "F11"                           : "fullscreen",
     };
     
     /**
@@ -3425,7 +3346,7 @@
         email         : /(\w+)@(\w+)\.(\w+)\.?(\w+)?/g,
         emailLink     : /(mailto:)?([\w\.\_]+)@(\w+)\.(\w+)\.?(\w+)?/g,
         emoji         : /:([\w\+-]+):/g,
-        emojiDatetime : /(\d{2}:\d{2}:\d{2})/g,
+        emojiDatetime : /(\d{1,2}:\d{1,2}:\d{1,2})/g,
         twemoji       : /:(tw-([\w]+)-?(\w+)?):/g,
         fontAwesome   : /:(fa-([\w]+)(-(\w+)){0,}):/g,
         editormdLogo  : /:(editormd-logo-?(\w+)?):/g,

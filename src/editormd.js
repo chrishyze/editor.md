@@ -1064,7 +1064,7 @@
                     toolbar.css({
                         position : "fixed",
                         width    : editor.width() + "px",
-                        left     : ($window.width() - editor.width()) / 2 + "px"
+                        left     : (editor.offset().left + 1) + "px"
                     });
                 }
                 else
@@ -3568,7 +3568,7 @@
             
             var headingHTML = "<h" + level + " id=\"h"+ level + "-" + this.options.headerPrefix + id +"\">";
             
-            headingHTML    += "<a name=\"" + text + "\" class=\"reference-link\"></a>";
+            headingHTML    += "<a name=\"" + text + "\" class=\"reference-link\" href=\"#\"></a>";
             headingHTML    += "<span class=\"header-link octicon octicon-link\"></span>";
             headingHTML    += (hasLinkReg) ? this.atLink(this.emoji(linkText)) : this.atLink(this.emoji(text));
             headingHTML    += "</h" + level + ">";
