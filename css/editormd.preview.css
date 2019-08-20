@@ -2808,13 +2808,19 @@
   padding-left: 2em;
 }*/
 .markdown-body ul {
-  list-style-type: disc !important;
+  list-style-type: disc;
 }
 .markdown-body ul ul {
-  list-style-type: circle !important;
+  list-style-type: circle;
 }
 .markdown-body ol {
-  list-style-type: decimal !important;
+  list-style-type: decimal;
+}
+.editormd-toc-menu ul,
+.editormd-toc-menu ul li,
+.editormd-toc-menu ul ul,
+.editormd-toc-menu ul ul li {
+    list-style-type: none;
 }
 
 .markdown-body ul ul,
