@@ -2803,9 +2803,18 @@
   background-color: #e7e7e7;
   border: 0 none;
 }*/
-.markdown-body ul,
+/*.markdown-body ul,
 .markdown-body ol {
   padding-left: 2em;
+}*/
+.markdown-body ul {
+  list-style-type: disc !important;
+}
+.markdown-body ul ul {
+  list-style-type: circle !important;
+}
+.markdown-body ol {
+  list-style-type: decimal !important;
 }
 
 .markdown-body ul ul,
@@ -2852,7 +2861,7 @@
 }
 
 .markdown-body table {
-  display: block;
+  /*display: block;*/
   width: 100%;
   overflow: auto;
   word-break: normal;
@@ -2874,9 +2883,9 @@
   border-top: 1px solid #ccc;
 }
 
-.markdown-body table tr:nth-child(2n) {
+/*.markdown-body table tr:nth-child(2n) {
   background-color: #f8f8f8;
-}
+}*/
 
 .markdown-body img {
   max-width: 100%;
@@ -3112,7 +3121,7 @@
 
 .editormd-preview-container, .editormd-html-preview {
   text-align: left;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.6;
   padding: 20px;
   overflow: auto;
@@ -3124,7 +3133,7 @@
   border-left: 4px solid #ddd;
   padding-left: 20px;
   margin-left: 0;
-  font-size: 14px;
+  font-size: 16px;
   font-style: italic;
 }
 .editormd-preview-container p code, .editormd-html-preview p code {
@@ -3307,6 +3316,7 @@ pre.prettyprint {
 ol.linenums {
   margin-top: 0;
   margin-bottom: 0;
+  margin-left: 0 !important;
 }
 
 /* IE indents via margin-left */
@@ -3322,13 +3332,13 @@ li.L8 {
 }
 
 /* Alternate shading for lines */
-li.L1,
+/*li.L1,
 li.L3,
 li.L5,
 li.L7,
 li.L9 {
   background: #eee;
-}
+}*/
 
 .editormd-preview-container pre.prettyprint, .editormd-html-preview pre.prettyprint {
   padding: 10px;
